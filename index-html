@@ -1,163 +1,714 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regina Pérez | Data Scientist Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>Regina Pérez | Data Scientist Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portafolio de ciencia de datos de Regina Pérez." />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #64ffda;
+      --accent-soft: rgba(100,255,218,0.08);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --card: #111827;
+      --border: #1f2937;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --max-width: 1080px;
+    }
 
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f7f7f7;
-            color: #222;
-        }
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-        header {
-            background: #1f2937;
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-        }
+    body {
+      margin: 0;
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-        h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
-        }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
 
-        h2 {
-            color: #111827;
-            font-size: 28px;
-        }
+    a:hover {
+      text-decoration: underline;
+    }
 
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
+    /* Layout */
+    .wrapper {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 3rem;
+    }
 
-        .section {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 20px;
-        }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(5,8,22,0.95), rgba(5,8,22,0.85), transparent);
+      border-bottom: 1px solid rgba(31,41,55,0.6);
+    }
 
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.6rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
 
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: 0.3s;
-        }
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-        }
+    nav a {
+      margin-left: 1rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
 
-        .card h3 {
-            margin-top: 0;
-            font-size: 20px;
-        }
+    nav a:hover {
+      color: var(--accent);
+    }
 
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: #1f2937;
-            color: white;
-            margin-top: 50px;
-        }
+    main {
+      padding-top: 1.25rem;
+    }
 
-        a {
-            text-decoration: none;
-            color: #2563eb;
-        }
+    section {
+      padding: 3rem 0 0;
+    }
 
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    h1, h2, h3 {
+      margin: 0 0 0.75rem;
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-header span {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding-top: 2rem;
+    }
+
+    .hero-kicker {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: transparent;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #020617;
+      border-color: transparent;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.08);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(100,255,218,0.06);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-meta div span {
+      display: block;
+    }
+
+    .hero-card {
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      background: radial-gradient(circle at top left, rgba(100,255,218,0.12), transparent 55%),
+                  linear-gradient(to bottom right, #020617, #020617, #020617);
+      border: 1px solid rgba(148,163,184,0.2);
+      box-shadow: 0 20px 45px rgba(15,23,42,0.8);
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.3);
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .hero-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .hero-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .pill {
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(51,65,85,0.9);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* Grid helpers */
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        display: none;
+      }
+      .grid-3, .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .wrapper {
+        padding-inline: 1rem;
+      }
+    }
+
+    /* Cards */
+    .card {
+      background: radial-gradient(circle at top, rgba(100,255,218,0.06), transparent 60%),
+                  var(--card);
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      padding: 1.1rem 1.1rem 1.2rem;
+      box-shadow: 0 12px 30px rgba(15,23,42,0.65);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-accent {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background: radial-gradient(circle at top right, rgba(100,255,218,0.22), transparent 55%);
+      pointer-events: none;
+      transition: opacity 0.25s ease-out;
+    }
+
+    .card:hover .card-accent {
+      opacity: 1;
+    }
+
+    .card-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .card-text {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
+    }
+
+    .chip {
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(75,85,99,0.9);
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .card-actions {
+      margin-top: 0.8rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-sm {
+      padding: 0.3rem 0.8rem;
+      font-size: 0.78rem;
+    }
+
+    /* Timeline / contact */
+    .timeline {
+      border-left: 1px dashed rgba(75,85,99,0.9);
+      padding-left: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    .timeline-item {
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      position: absolute;
+      left: -1.55rem;
+      top: 0.25rem;
+    }
+
+    .timeline-title {
+      font-size: 0.9rem;
+      margin-bottom: 0.1rem;
+    }
+
+    .timeline-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-card p {
+      margin: 0.3rem 0;
+    }
+
+    footer {
+      border-top: 1px solid rgba(31,41,55,0.8);
+      padding: 1.2rem 1.25rem 2rem;
+      margin-top: 3rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
 </head>
-
 <body>
+  <header>
+    <div class="nav-inner">
+      <div class="logo">REGINA PÉREZ · DATA SCIENTIST</div>
+      <nav>
+        <a href="#about">Sobre mí</a>
+        <a href="#projects">Proyectos</a>
+        <a href="#skills">Habilidades</a>
+        <a href="#contact">Contacto</a>
+      </nav>
+    </div>
+  </header>
 
-    <header>
-        <h1>Regina Pérez</h1>
-        <p>Científica de Datos • Machine Learning • Análisis Predictivo • Visualización</p>
-    </header>
+  <div class="wrapper">
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="top">
+        <div>
+          <div class="hero-kicker">Data Science · Machine Learning · Analytics</div>
+          <h1 class="hero-title">Hola, soy <span>Regina Pérez</span>.</h1>
+          <p class="hero-subtitle">
+            Científica de datos enfocada en traducir problemas de negocio en soluciones analíticas:
+            modelos de riesgo, segmentación de clientes y visualizaciones que impulsan decisiones.
+          </p>
 
-    <section class="section">
-        <h2>Sobre mí</h2>
-        <p>
-            Soy una científica de datos apasionada por transformar datos en decisiones estratégicas. 
-            Me especializo en análisis exploratorio, modelos predictivos, machine learning y 
-            visualización de datos. Aquí encontrarás una colección de mis proyectos más relevantes.
-        </p>
-    </section>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">Ver proyectos</a>
+            <a href="#contact" class="btn btn-ghost">Contactar</a>
+          </div>
 
-    <section class="section">
-        <h2>Proyectos</h2>
-
-        <div class="projects">
-
-            <!-- Proyecto 1 -->
-            <div class="card">
-                <h3>📊 Análisis Multivariado</h3>
-                <p>Aplicación de PCA, clustering y segmentación de clientes para un caso de negocio real.</p>
-                <a href="#" target="_blank">Ver proyecto</a>
+          <div class="hero-meta">
+            <div>
+              <span>Enfoque</span>
+              <span>Analytics · ML aplicado · Storytelling</span>
             </div>
-
-            <!-- Proyecto 2 -->
-            <div class="card">
-                <h3>🤖 Modelo de Clasificación</h3>
-                <p>Modelo supervisado para predecir churn y optimizar estrategias comerciales.</p>
-                <a href="#" target="_blank">Ver proyecto</a>
+            <div>
+              <span>Stack</span>
+              <span>Python · pandas · scikit-learn · SQL</span>
             </div>
-
-            <!-- Proyecto 3 -->
-            <div class="card">
-                <h3>📈 Dashboard de BI</h3>
-                <p>Visualización avanzada con KPIs, filtros interactivos y análisis de ventas.</p>
-                <a href="#" target="_blank">Ver proyecto</a>
-            </div>
-
-            <!-- Proyecto 4 -->
-            <div class="card">
-                <h3>🔐 Criptografía & Seguridad</h3>
-                <p>Diseño de arquitectura segura para un sistema de votación electrónica.</p>
-                <a href="#" target="_blank">Ver proyecto</a>
-            </div>
-
-            <!-- Proyecto 5 -->
-            <div class="card">
-                <h3>🎥 Presupuesto Cinematográfico</h3>
-                <p>EDA + dashboard interactivo para optimizar el gasto en producción audiovisual.</p>
-                <a href="#" target="_blank">Ver proyecto</a>
-            </div>
-
+          </div>
         </div>
-    </section>
 
-    <section class="section">
-        <h2>Contacto</h2>
-        <p>
-            📧 <a href="mailto:regina@example.com">regina@example.com</a><br>
-            💼 <a href="https://www.linkedin.com" target="_blank">LinkedIn</a><br>
-            👩‍💻 <a href="https://github.com" target="_blank">GitHub</a>
-        </p>
-    </section>
+        <aside class="hero-card">
+          <div class="hero-tag">Portafolio de Ciencia de Datos</div>
+          <h3>De datos crudos a decisiones accionables.</h3>
+          <p>
+            Cada proyecto de este portafolio nace de una pregunta clara de negocio, se respalda con
+            análisis estadístico sólido y termina en recomendaciones concretas para stakeholders.
+          </p>
+          <div class="hero-pill-row">
+            <div class="pill">Segmentación de clientes</div>
+            <div class="pill">Riesgo crediticio</div>
+            <div class="pill">Satisfacción & factores latentes</div>
+          </div>
+        </aside>
+      </section>
 
-    <footer>
-        © 2025 Regina Pérez — Data Science Portfolio
-    </footer>
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="section-header">
+          <h2>Sobre mí</h2>
+          <span>Quién soy y cómo trabajo</span>
+        </div>
+        <div class="grid grid-2">
+          <div>
+            <p>
+              Me gusta trabajar donde se cruzan los datos, el negocio y las personas. Disfruto
+              construir desde el preprocesamiento y la exploración hasta el modelo y la
+              visualización final, siempre cuidando que el resultado sea entendible y útil para
+              quienes toman decisiones.
+            </p>
+            <p>
+              Mis intereses principales son el análisis de clientes, el riesgo financiero y el diseño
+              de métricas que conecten el desempeño del modelo con impacto económico real.
+            </p>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-title">Análisis de clientes & retail</div>
+              <div class="timeline-meta">Segmentación, RFM, patrones de compra</div>
+              <div class="timeline-text">
+                Proyectos orientados a entender quién compra, cuándo, qué y cuánto, para
+                diseñar acciones comerciales específicas por segmento.
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-title">Riesgo crediticio</div>
+              <div class="timeline-meta">Modelos supervisados y métricas de negocio</div>
+              <div class="timeline-text">
+                Del análisis exploratorio a métricas como AUC, precision/recall y
+                trade-offs entre aprobar o rechazar clientes.
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-title">Experiencia del cliente</div>
+              <div class="timeline-meta">Análisis factorial & satisfacción</div>
+              <div class="timeline-text">
+                Uso de técnicas multivariadas para identificar los factores que explican la
+                percepción de servicio y priorizar acciones de mejora.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <!-- PROJECTS -->
+      <section id="projects">
+        <div class="section-header">
+          <h2>Proyectos de ciencia de datos</h2>
+          <span>Selección de notebooks aplicados</span>
+        </div>
+
+        <div class="grid grid-3">
+          <!-- Project 1 -->
+          <article class="card">
+            <div class="card-accent"></div>
+            <div class="card-label">Retail · Segmentación</div>
+            <h3 class="card-title">Customer Segmentation – MegaMart</h3>
+            <p class="card-text">
+              Segmentación de clientes usando métricas RFM, clustering y análisis exploratorio
+              para identificar qué perfiles impulsan la mayor parte de las ventas y cómo
+              diseñar acciones personalizadas.
+            </p>
+            <div class="chip-row">
+              <span class="chip">pandas</span>
+              <span class="chip">scikit-learn</span>
+              <span class="chip">RFM</span>
+              <span class="chip">K-Means</span>
+            </div>
+            <div class="card-actions">
+              <!-- Cambia los href por tus URLs reales -->
+              <a class="btn btn-sm btn-primary" href="https://github.com/TU-USUARIO/TU-REPO/blob/main/retail.ipynb" target="_blank" rel="noopener">
+                Ver notebook
+              </a>
+              <a class="btn btn-sm btn-ghost" href="#contact">
+                Resumen ejecutivo
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="card">
+            <div class="card-accent"></div>
+            <div class="card-label">Finanzas · Riesgo</div>
+            <h3 class="card-title">Credit Risk Analysis – LendSmart</h3>
+            <p class="card-text">
+              Análisis de riesgo crediticio combinando EDA, ingeniería de características y
+              modelos supervisados para distinguir clientes de alto y bajo riesgo, con enfoque
+              en métricas de negocio.
+            </p>
+            <div class="chip-row">
+              <span class="chip">EDA</span>
+              <span class="chip">modelos binarios</span>
+              <span class="chip">ROC / AUC</span>
+              <span class="chip">Python</span>
+            </div>
+            <div class="card-actions">
+              <a class="btn btn-sm btn-primary" href="https://github.com/TU-USUARIO/TU-REPO/blob/main/credit_risk_analysis.ipynb" target="_blank" rel="noopener">
+                Ver notebook
+              </a>
+              <a class="btn btn-sm btn-ghost" href="#contact">
+                Ver detalles
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="card">
+            <div class="card-accent"></div>
+            <div class="card-label">Customer Experience</div>
+            <h3 class="card-title">Customer Satisfaction & Factor Analysis</h3>
+            <p class="card-text">
+              Proyecto de satisfacción del cliente donde se aplican pruebas de adecuación y
+              análisis factorial para descubrir dimensiones latentes de servicio y proponer
+              mejoras concretas.
+            </p>
+            <div class="chip-row">
+              <span class="chip">factor-analyzer</span>
+              <span class="chip">KMO & Bartlett</span>
+              <span class="chip">Statsmodels</span>
+            </div>
+            <div class="card-actions">
+              <a class="btn btn-sm btn-primary" href="https://github.com/TU-USUARIO/TU-REPO/blob/main/costumer_satisfaction.ipynb" target="_blank" rel="noopener">
+                Ver notebook
+              </a>
+              <a class="btn btn-sm btn-ghost" href="#contact">
+                Documentación
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <div class="section-header">
+          <h2>Habilidades técnicas</h2>
+          <span>Stack principal</span>
+        </div>
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-accent"></div>
+            <div class="card-label">Lenguajes & herramientas</div>
+            <h3 class="card-title">Data & ML stack</h3>
+            <p class="card-text">
+              Trabajo principalmente con Python para análisis, modelado y visualización.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Python</span>
+              <span class="chip">pandas</span>
+              <span class="chip">NumPy</span>
+              <span class="chip">scikit-learn</span>
+              <span class="chip">Matplotlib</span>
+              <span class="chip">Seaborn</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-accent"></div>
+            <div class="card-label">Estadística & modelos</div>
+            <h3 class="card-title">Modelado y análisis</h3>
+            <p class="card-text">
+              De análisis descriptivo a modelos supervisados y técnicas multivariadas.
+            </p>
+            <div class="chip-row">
+              <span class="chip">EDA</span>
+              <span class="chip">Regresión</span>
+              <span class="chip">Clustering</span>
+              <span class="chip">Análisis factorial</span>
+              <span class="chip">Validación</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-accent"></div>
+            <div class="card-label">Storytelling</div>
+            <h3 class="card-title">Comunicación</h3>
+            <p class="card-text">
+              Enfoque en explicar hallazgos de forma clara a perfiles técnicos y de negocio,
+              con visualizaciones y conclusiones accionables.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Dashboards</span>
+              <span class="chip">Power BI / Charts</span>
+              <span class="chip">Presentaciones ejecutivas</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="section-header">
+          <h2>Contacto</h2>
+          <span>Colaboremos</span>
+        </div>
+        <div class="grid grid-2">
+          <div class="card contact-card">
+            <div class="card-accent"></div>
+            <div class="card-label">Disponibilidad</div>
+            <h3 class="card-title">Proyectos, prácticas e internships</h3>
+            <p class="card-text">
+              Estoy abierta a colaborar en proyectos de analítica, modelado de clientes,
+              riesgo y ciencia de datos aplicada.
+            </p>
+            <p><strong>Email:</strong> <a href="mailto:tu.correo@ejemplo.com">tu.correo@ejemplo.com</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/TU-USUARIO" target="_blank" rel="noopener">github.com/TU-USUARIO</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/TU-LINKEDIN" target="_blank" rel="noopener">linkedin.com/in/TU-LINKEDIN</a></p>
+          </div>
+
+          <div class="card">
+            <div class="card-accent"></div>
+            <div class="card-label">Siguiente paso</div>
+            <h3 class="card-title">Cómo leer este portafolio</h3>
+            <p class="card-text">
+              Cada notebook incluye:
+            </p>
+            <ul class="card-text">
+              <li>Planteamiento del problema de negocio.</li>
+              <li>Preparación y exploración de datos.</li>
+              <li>Modelos y métricas clave.</li>
+              <li>Recomendaciones en lenguaje de negocio.</li>
+            </ul>
+            <p class="card-text">
+              Si quieres que adapte un análisis a tu contexto, escríbeme y platicamos.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Regina Pérez · Data Scientist
+  </footer>
+
+  <script>
+    // Año automático en el footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
